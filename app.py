@@ -178,6 +178,9 @@ def load_model_and_data():
     if os.path.exists(model_path):
         model = tf.keras.models.load_model(model_path)
     else:
+        st.error(f"🚨 Model file '{model_path}' NOT found! Please upload it to GitHub.")
+        st.stop()
+    """else:
         model = Sequential([
             Embedding(NUM_GENRES, 50, input_length=SEQ_LEN),
             LSTM(128, return_sequences=True),
@@ -196,7 +199,7 @@ def load_model_and_data():
                   callbacks=[EarlyStopping(monitor='val_loss', patience=5,
                                            restore_best_weights=True)],
                   verbose=0)
-        model.save(model_path)
+        model.save(model_path)"""
 
     # ── Movie DB ──
     avg_rat = ratings.groupby('movie_id')['rating'].agg(['mean','count']).reset_index()
