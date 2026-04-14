@@ -174,7 +174,7 @@ def load_model_and_data():
                                               random_state=42)
 
     # ── Model ──
-    model_path = 'cinemate_lstm.keras'
+    model_path = 'cinemate_lstm_model.keras'
     if os.path.exists(model_path):
         model = tf.keras.models.load_model(model_path)
     else:
